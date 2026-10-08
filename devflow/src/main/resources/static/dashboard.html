@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>DevFlow Agent Dashboard</title>
+
+    <link rel="stylesheet" href="dashboard.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-icon">✦</div>
+            <div>
+                <h1>DevFlow</h1>
+                <span>AI Engineering Team</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <span class="section-label">AGENTS</span>
+
+            <div class="agent-card">
+                <div class="agent-avatar ba">BA</div>
+                <div class="agent-info">
+                    <strong>Business Analyst</strong>
+                    <span id="ba-status">Idle</span>
+                </div>
+                <div class="status-dot" id="ba-dot"></div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-avatar pm">PM</div>
+                <div class="agent-info">
+                    <strong>Project Manager</strong>
+                    <span id="pm-status">Idle</span>
+                </div>
+                <div class="status-dot" id="pm-dot"></div>
+            </div>
+
+            <div class="agent-card">
+                <div class="agent-avatar worker">W1</div>
+                <div class="agent-info">
+                    <strong>Worker 1</strong>
+                    <span id="worker1-status">Idle</span>
+                </div>
+                <div class="status-dot" id="worker1-dot"></div>
+            </div>
+        </div>
+
+        <div class="connection">
+            <div class="connection-indicator" id="connection-indicator"></div>
+
+            <div>
+                <span class="connection-title">Event Stream</span>
+                <span class="connection-status" id="connection-status">
+                    Connecting...
+                </span>
+            </div>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main">
+
+        <!-- Header -->
+        <header class="topbar">
+
+            <div>
+                <div class="eyebrow">LIVE PROJECT</div>
+                <h2>Agent Activity</h2>
+                <p>Watch your AI engineering team build the project.</p>
+            </div>
+
+            <div class="live-badge">
+                <span></span>
+                LIVE
+            </div>
+
+        </header>
+
+
+        <!-- Current Activity -->
+        <section class="current-activity">
+
+            <div class="activity-icon" id="current-icon">
+                ✦
+            </div>
+
+            <div class="current-content">
+
+                <span class="current-label">
+                    CURRENT ACTIVITY
+                </span>
+
+                <h3 id="current-agent">
+                    Waiting for agents...
+                </h3>
+
+                <p id="current-message">
+                    The dashboard is waiting for activity.
+                </p>
+
+            </div>
+
+            <div class="pulse"></div>
+
+        </section>
+
+
+        <!-- Statistics -->
+        <section class="stats">
+
+            <div class="stat-card">
+                <span class="stat-label">EVENTS</span>
+                <strong id="event-count">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">ACTIVE AGENT</span>
+                <strong id="active-agent">None</strong>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">LAST EVENT</span>
+                <strong id="last-event">--:--</strong>
+            </div>
+
+        </section>
+
+
+        <!-- Timeline -->
+        <section class="timeline-section">
+
+            <div class="section-header">
+
+                <div>
+                    <h3>Activity Timeline</h3>
+                    <p>Real-time events from the engineering team</p>
+                </div>
+
+                <button id="clear-events">
+                    Clear
+                </button>
+
+            </div>
+
+            <div class="timeline" id="timeline">
+
+                <div class="empty-state" id="empty-state">
+
+                    <div class="empty-icon">
+                        ◌
+                    </div>
+
+                    <h3>Waiting for activity</h3>
+
+                    <p>
+                        Agent activity will appear here in real time.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script src="dashboard.js"></script>
+
+</body>
+</html>

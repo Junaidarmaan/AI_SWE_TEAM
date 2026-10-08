@@ -157,3 +157,49 @@ body {
         max-width: 85%;
     }
 }
+```css
+.dashboard-link {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 9px 14px;
+
+    border: 1px solid #2b3548;
+    border-radius: 8px;
+
+    background: #111827;
+
+    color: #aeb9cc;
+
+    text-decoration: none;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.dashboard-link span {
+    color: #42d392;
+    font-size: 8px;
+
+    animation: dashboardPulse 1.5s infinite;
+}
+
+.dashboard-link:hover {
+    color: white;
+
+    border-color: #52627d;
+
+    background: #172033;
+
+    transform: translateY(-1px);
+}
+
+@keyframes dashboardPulse {
+    50% {
+        opacity: 0.35;
+    }
+}
+```

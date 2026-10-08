@@ -1,0 +1,1 @@
+Requirements for a simple web-based digital clock (24h format, seconds, responsive UI).

@@ -1,0 +1,20 @@
+Project: Digital Clock
+Task: Build a simple web-based digital clock with 24-hour format and seconds.
+
+Requirements:
+1. Create 'index.html':
+   - A container element with ID 'clock' to display the time.
+   - Use semantic HTML tags.
+
+2. Create 'style.css':
+   - Style the clock to be centered on the page.
+   - Ensure the UI is responsive (looks good on mobile and desktop).
+   - Use a clear, readable font.
+
+3. Create 'script.js':
+   - Use setInterval to update the clock every 1000ms.
+   - Format the time as HH:MM:SS (24-hour format).
+   - Update the innerText of the 'clock' element.
+
+Responsibility:
+- Implement all HTML, CSS, and JS files to create a complete working digital clock.

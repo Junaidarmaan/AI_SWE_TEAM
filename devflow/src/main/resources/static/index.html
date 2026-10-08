@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,118 +10,121 @@
 
 <body>
 
-<div class="chat-container">
+    <div class="chat-container">
 
-    <header class="chat-header">
-        <div>
-            <h1>Business Analyst</h1>
-            <p>Let's define your software requirements</p>
-        </div>
-    </header>
+        <header class="chat-header">
 
-    <main class="chat-messages" id="chatMessages">
-
-        <div class="message agent">
-            <div class="message-content">
-                Hi! I'm your Business Analyst. Tell me about the software
-                you're planning to build, and I'll help you define the
-                requirements.
+            <div>
+                <h1>Business Analyst</h1>
+                <p>Let's define your software requirements</p>
             </div>
-        </div>
 
-    </main>
+            <a href="dashboard.html" class="dashboard-link">
+                <span>●</span>
+                Live Dashboard
+            </a>
 
-    <form class="chat-input-area" id="chatForm">
+        </header>
 
-        <input
-            type="text"
-            id="messageInput"
-            placeholder="Describe what you want to build..."
-            autocomplete="off"
-            required
-        >
+        <main class="chat-messages" id="chatMessages">
 
-        <button type="submit" id="sendButton">
-            Send
-        </button>
+            <div class="message agent">
+                <div class="message-content">
+                    Hi! I'm your Business Analyst. Tell me about the software
+                    you're planning to build, and I'll help you define the
+                    requirements.
+                </div>
+            </div>
 
-    </form>
+        </main>
 
-</div>
+        <form class="chat-input-area" id="chatForm">
 
-<script>
+            <input type="text" id="messageInput" placeholder="Describe what you want to build..." autocomplete="off"
+                required>
 
-    const chatForm = document.getElementById("chatForm");
-    const messageInput = document.getElementById("messageInput");
-    const chatMessages = document.getElementById("chatMessages");
-    const sendButton = document.getElementById("sendButton");
+            <button type="submit" id="sendButton">
+                Send
+            </button>
 
-    chatForm.addEventListener("submit", async (event) => {
+        </form>
 
-        event.preventDefault();
+    </div>
 
-        const message = messageInput.value.trim();
+    <script>
 
-        if (!message) {
-            return;
-        }
+        const chatForm = document.getElementById("chatForm");
+        const messageInput = document.getElementById("messageInput");
+        const chatMessages = document.getElementById("chatMessages");
+        const sendButton = document.getElementById("sendButton");
 
-        addMessage(message, "user");
+        chatForm.addEventListener("submit", async (event) => {
 
-        messageInput.value = "";
-        sendButton.disabled = true;
-        sendButton.textContent = "Sending...";
+            event.preventDefault();
 
-        try {
+            const message = messageInput.value.trim();
 
-            const response = await fetch(
-                `/chat/${encodeURIComponent(message)}`
-            );
-
-            if (!response.ok) {
-                throw new Error("Failed to communicate with the server");
+            if (!message) {
+                return;
             }
 
-            const reply = await response.text();
+            addMessage(message, "user");
 
-            addMessage(reply, "agent");
+            messageInput.value = "";
+            sendButton.disabled = true;
+            sendButton.textContent = "Sending...";
 
-        } catch (error) {
+            try {
 
-            addMessage(
-                "Sorry, I couldn't connect to the Business Analyst.",
-                "agent"
-            );
+                const response = await fetch(
+                    `/chat/${encodeURIComponent(message)}`
+                );
 
-            console.error(error);
+                if (!response.ok) {
+                    throw new Error("Failed to communicate with the server");
+                }
 
-        } finally {
+                const reply = await response.text();
 
-            sendButton.disabled = false;
-            sendButton.textContent = "Send";
-            messageInput.focus();
+                addMessage(reply, "agent");
 
+            } catch (error) {
+
+                addMessage(
+                    "Sorry, I couldn't connect to the Business Analyst.",
+                    "agent"
+                );
+
+                console.error(error);
+
+            } finally {
+
+                sendButton.disabled = false;
+                sendButton.textContent = "Send";
+                messageInput.focus();
+
+            }
+
+        });
+
+        function addMessage(text, sender) {
+
+            const message = document.createElement("div");
+            message.classList.add("message", sender);
+
+            const content = document.createElement("div");
+            content.classList.add("message-content");
+
+            content.textContent = text;
+
+            message.appendChild(content);
+            chatMessages.appendChild(message);
+
+            chatMessages.scrollTop = chatMessages.scrollHeight;
         }
 
-    });
-
-    function addMessage(text, sender) {
-
-        const message = document.createElement("div");
-        message.classList.add("message", sender);
-
-        const content = document.createElement("div");
-        content.classList.add("message-content");
-
-        content.textContent = text;
-
-        message.appendChild(content);
-        chatMessages.appendChild(message);
-
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-</script>
+    </script>
 
 </body>
+
 </html>
